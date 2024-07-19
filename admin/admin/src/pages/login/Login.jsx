@@ -20,6 +20,8 @@ const Login = () => {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "center",
+        backgroundColor:"rebeccapurple",
+        opacity:"0.6"
       }}
     >
       <input
