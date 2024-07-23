@@ -16,26 +16,23 @@ function App() {
   const admin = useSelector((state) => state.user.currentUser?.isAdmin);
 
   return (
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      {admin ? (
-        <>
-          <Topbar />
-          <div className="container">
-            <Sidebar />
-            <Route path="/" element={<Home />} />
-            <Route path="/users" element={<UserList />} />
-            <Route path="/user/:userId" element={<User />} />
-            <Route path="/newUser" element={<NewUser />} />
-            <Route path="/products" element={<ProductList />} />
-            <Route path="/product/:productId" element={<Product />} />
-            <Route path="/newproduct" element={<NewProduct />} />
-          </div>
-        </>
-      ) : (
-        <Route path="*" element={<Navigate to="/login" />} />
-      )}
-    </Routes>
+    <>
+      <Topbar />
+      <div className="container">
+        <Sidebar />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/users" element={<UserList />} />
+          <Route path="/user/:userId" element={<User />} />
+          <Route path="/newUser" element={<NewUser />} />
+          <Route path="/products" element={<ProductList />} />
+          <Route path="/product/:productId" element={<Product />} />
+          <Route path="/newproduct" element={<NewProduct />} />
+          {!admin && <Route path="*" element={<Navigate to="/login" />} />}
+        </Routes>
+      </div>
+    </>
   );
 }
 
